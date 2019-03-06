@@ -1,19 +1,21 @@
+"use strict";
+
 const items = document.querySelectorAll('.inbox input[type = checkbox]');
 items.forEach(a => a.addEventListener('click', checkMissingOnes));
 
 let lastChecked;
 
-function checkMissingOnes(a) {
+function checkMissingOnes(event) {
     
     let between = false;
     
-    if (a.shiftKey && this.checked) {
-        items.forEach(a => {
-            if (a === lastChecked || a === this) {
+    if (event.shiftKey && this.checked) {
+        items.forEach(item => {
+            if (item === lastChecked || item === this) {
                 between = !between;
             }
             if (between) {
-                a.checked = true;
+                item.checked = true;
             }
         });
         
